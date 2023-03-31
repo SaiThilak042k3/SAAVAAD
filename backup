@@ -1,0 +1,30 @@
+screenOptions={(route) => ({
+                    tabBarIcon: ({ color, size }) => {
+                      let iconName;
+          
+                      if (route.name === 'Home') {
+                        iconName = "home"
+                      } else if (route.name === 'Settings') {
+                        iconName = 'cog';
+                      }
+          
+                      // You can return any component that you like here!
+                      return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+                    },
+                    tabBarActiveTintColor: activeColors.accent,
+                    tabBarInactiveTintColor: activeColors.accent,
+                    tabBarStyle: {
+                        backgroundColor: activeColors.tertiary,                        
+                    },
+                    //tabBarShowLabel: false
+                    headerTitleAlign: 'left',
+                    headerTitleStyle: {
+                        paddingLeft: 10
+                    },
+                    headerStyle: {
+                        backgroundColor: activeColors.secondary
+                    },
+                    headerTintColor: activeColors.tint,
+
+
+                  })}

@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import RootStack from './screens/navigators/RootStack';
+import { useState } from 'react';
+import { ThemeContext }  from "./contexts/ThemeContext";
+import Signin from './screens/login/Signin';
+import Signup from './screens/login/Signup';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+  const [theme, setTheme] = useState({mode: "light"});
+
+  const updateTheme = (newTheme) => {
+    let mode;
+    if(!newTheme) {
+      mode = theme.mode === "dark" ? "light" : "dark";
+      newTheme = {mode};
+    }
+    setTheme(newTheme);
+  };
+
+  return(
+
+      <ThemeContext.Provider value={{ theme, updateTheme }}>
+          <RootStack />
+      </ThemeContext.Provider>
+
+      // <Stack.Navigator initialRouteName='Sigin'>
+      //   <Stack.Screen name='Signup' component={Signup} />
+      //   <Stack.Screen name='Signin' component={Signin} />
+      // </Stack.Navigator>
+
   );
+  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
