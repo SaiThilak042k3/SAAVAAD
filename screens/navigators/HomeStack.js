@@ -14,7 +14,7 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 
 import { colors } from '../../config/Colors';
 
-import InputText from '../inputs/TextInput';
+import TextInput from '../inputs/TextInput';
 import UploadImage from '../inputs/UploadImage';
 import TextToAudio from './../inputs/TextToAudio';
 import TranslateText from '../inputs/TranslateText';
@@ -50,7 +50,7 @@ const HomeStackScreen = () => {
                 />
                 <HomeStack.Screen name='Profile' component={Profile}
                 />
-                <HomeStack.Screen name='InputText' component={InputText}
+                <HomeStack.Screen name='TextInput' component={TextInput}
                 />
                 <HomeStack.Screen name='UploadImage' component={UploadImage}
                 />

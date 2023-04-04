@@ -8,7 +8,7 @@ import StyledText from '../text/StyledText';
 
 
 
-const ToolsItem = ({ image, title, content, ...props }) => {
+const ToolsItem = ({ image, title, content, input1, input2, apiName, ...props }) => {
     const navigation = useNavigation(); 
     return (
       
@@ -17,7 +17,7 @@ const ToolsItem = ({ image, title, content, ...props }) => {
         onPress={() => {    
             navigation.navigate("Detials",
             
-              {image, title, content}
+              {image, title, content, input1, input2, apiName}
             )
           }} 
           style={[             

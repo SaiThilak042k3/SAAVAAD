@@ -35,7 +35,7 @@ export default function InputText() {
   };
 
   const handleTextToAudio = async () => {
-    const response = await fetch('https://silent-memes-itch-136-232-201-34.loca.lt/text_audio', {
+    const response = await fetch('http://192.168.34.133:12345/text_audio', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

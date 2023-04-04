@@ -86,7 +86,7 @@ export default function InputText() {
                       editable
                       multiline
                       numberOfLines={4}
-                      placeholder="Type or paste your Text"
+                      placeholder="Translate your language"
                       onChangeText={(text) => setSummary(text)}
                       value={summaryText}
                     />  
@@ -125,7 +125,7 @@ export default function InputText() {
                       editable  
                       multiline 
                       numberOfLines={2}
-                      placeholder="Summary Result"
+                      placeholder="Translate Result"
                       onChangeText={(text) => setSummaryResult(text)}
                       value={resultText}
                       

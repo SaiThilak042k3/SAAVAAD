@@ -1,4 +1,4 @@
-import { StyleSheet,Image, TextInput, TouchableOpacity, Pressable, Text, View } from 'react-native';
+import { StyleSheet,Image, TextInput, TouchableOpacity, ActivityIndicator, Pressable, Text, View, Alert } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import {useState} from 'react';
 
@@ -26,6 +26,7 @@ export default function InputText() {
   const [summaryText, setSummary] = useState("");
   const [resultText, setResultText] = useState("");
   const [summaryResult, setSummaryResult] = useState("");
+  const [isSubmitting, setSubmitting] = useState("");
 
   const fetchCopiedText = async () => {
     const text = await Clipboard.getStringAsync();
@@ -33,24 +34,36 @@ export default function InputText() {
   };
 
   const handlePress = async (event) => {
-    event.preventDefault();
-  
-    if (summaryText) {
-    const response = await fetch('http://192.168.34.133:12345/translate_hi_en', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: summaryText
-    })
-  });
-  
-    const resultText = await response.json();
-  
-    setResultText(JSON.stringify(resultText));
 
-  }
+
+    if(summaryText == ' '){
+      Alert.alert("Please fill the field");
+      setSubmitting(false);
+    } else{
+          event.preventDefault();
+          setSubmitting(true);
+      
+        if (summaryText) {
+        const response = await fetch('http://192.168.34.133:12345/translate_hi_en', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: summaryText
+        })
+      });
+      
+        const resultText = await response.json();
+      
+        setResultText(JSON.stringify(resultText));
+
+        setSubmitting(false);
+
+      }
+
+    }
+    
   };
  
 
@@ -100,12 +113,16 @@ export default function InputText() {
                   </TouchableOpacity>
                     
                 </View>
-                <Pressable style={[styles.button]}   onPress={handlePress}>
+                {!isSubmitting && <Pressable style={[styles.button]}   onPress={handlePress}>
                   <Text style={styles.text}>Submit</Text>
-                </Pressable>
+                </Pressable>}
+
+                {isSubmitting && <Pressable style={[styles.button]} disabled={true}>
+                  <ActivityIndicator size={'large'} color={activeColors.primary} />
+                </Pressable>}
 
                 
-        
+         
 
     
         <View style={{

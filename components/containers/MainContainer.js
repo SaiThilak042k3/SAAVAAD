@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { colors } from '../../config/Colors';
 
- 
+  
 //theme
 import {useContext} from "react";
 import { ThemeContext } from '../../contexts/ThemeContext';

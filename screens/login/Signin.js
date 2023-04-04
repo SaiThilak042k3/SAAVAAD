@@ -10,6 +10,7 @@ import {
 import Logo from './../../assets/images/logo-b.png';
 import CustomButton from './../../components/custom/CustomButton';
 import CustomInput from './../../components/custom/CustomInput';
+import * as Google from 'expo-auth-session/providers/google';
 
 const Signin = ( {navigation} ) => {
 const [username, setUsername] = useState('');
@@ -21,7 +22,28 @@ const onForgotPasswordPressed = () => {
   console.warn('Good you forgot password');
 };
 const onSignInWithGoogle = () => {
-  console.warn('Signned in with gooogle');
+  const config = {    
+    androidClient: `859463544052-m53451d83skkdkves9ssf9l6e4ghv6nc.apps.googleusercontent.com`,
+    scopes: ['profile', 'email']
+  };
+
+  Google
+    .logInAsync(config)
+    .then((result) => {
+      const {type, user} = result;
+
+      if(type =='success'){
+        const { email, name, photoUrl} = user;
+        console.warn("Success google sign in");
+        setTimeout(() => navigation.navigate('Home', {email, name, photoUrl}, 1000));
+      } else{
+        console.warn("error google sign in");
+      }
+    })
+    .catch(error => {
+      console.warn(error);
+    })
+
 };
 const onSignUpPressed = () => {
   navigation.navigate('Signup')

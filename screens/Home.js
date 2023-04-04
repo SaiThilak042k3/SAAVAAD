@@ -54,12 +54,12 @@ export default function Home() {
         </View>
 
       
-        <StyledText style={styles.sectionTitle} big>
+        {/* <StyledText style={styles.sectionTitle} big>
             Tools #1
         </StyledText>          
         <FeaturesSection
           data={featuresData}
-        />
+        /> */}
         <StyledText style={styles.sectionTitle} big>
             Tools #2
         </StyledText>

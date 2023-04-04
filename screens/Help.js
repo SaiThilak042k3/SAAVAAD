@@ -13,8 +13,9 @@ import { colors } from '../config/Colors';
 import {useContext} from "react";
 import { ThemeContext } from "./../contexts/ThemeContext";
 
-
-
+import StyledText from '../components/text/StyledText';
+import FeaturesSection from '../components/Features/FeaturesSection';
+import { featuresData } from '../config/data';
 
 
 export default function Help() {
@@ -30,10 +31,12 @@ export default function Help() {
     }
     >
 
-            <Text>HELP</Text>
-        
-          <Image source={require('./../assets/images/underWork.png')} style={styles.image}/>
-            
+           <StyledText style={styles.sectionTitle} big>
+                Tools #1
+            </StyledText>          
+            <FeaturesSection
+              data={featuresData}
+        /> 
     </MainContainer>
   );
 }

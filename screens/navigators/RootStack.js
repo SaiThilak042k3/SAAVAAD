@@ -28,11 +28,11 @@ const RootStack = () => {
     return ( 
      
         <NavigationContainer>
-          {/* <Stack.Navigator initialRouteName='Signin'>
+          <Stack.Navigator initialRouteName='Signin'>
               <Stack.Screen name='Signup' component={Signup} />
               <Stack.Screen name='Signin' component={Signin} />
-          </Stack.Navigator> */}
-            <Tab.Navigator
+          </Stack.Navigator>
+            {/* <Tab.Navigator
             
             screenOptions={(route) => ({
                 tabBarIcon: ({ color, size }) => {
@@ -77,7 +77,7 @@ const RootStack = () => {
                 }}/>  
                 <Tab.Screen name='Settings' component={Settings} />
                 
-            </Tab.Navigator>
+            </Tab.Navigator> */}
         </NavigationContainer>
         
     )
